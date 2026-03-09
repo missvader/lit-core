@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { ref } from "lit/directives/ref.js";
 
 class DwMessaje extends LitElement {
   static styles = css`
@@ -8,29 +9,36 @@ class DwMessaje extends LitElement {
       padding: 10px;
     }
     div {
+      display: none;
       background-color: #daafeb;
     }
     p {
       margin-bottom: 0;
     }
+    :host([show]) div {
+      display: block;
+    }
   `;
 
   static properties = {
-    msg: { type: String },
+    msg: { type: String, attribute: "message", state: false },
+    show: { type: Boolean, reflect: true },
   };
   constructor() {
     super();
     this.msg = "Bienvenidos a este componente de Lit";
+    this.show = false;
   }
   render() {
     return html`
       <div>${this.msg}</div>
-      <p><b>Esto tambien forma parte del componente </b></p>
-      <button @click=${this.changeMsg}>Click!!</button>
+      <button @click=${this.toogle}>
+        ${this.show ? "Ocultar" : "Mostrar"}
+      </button>
     `;
   }
-  changeMsg() {
-    this.msg = "El mensaje ha cambiado";
+  toogle() {
+    this.show = !this.show;
   }
 }
 
