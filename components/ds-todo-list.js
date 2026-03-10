@@ -21,53 +21,32 @@ export class DsTodoList extends LitElement {
   ];
 
   static properties = {
-    loggedIn: { type: Boolean },
-    role: { type: String },
+    completed: { type: Boolean },
   };
   constructor() {
     super();
-    this.loggedIn = false;
-    this.role = "premium";
+    this.completed = false;
   }
 
   render() {
     return html`
-      <button @click=${this.changeLoggedIn}>cambiar logueado</button>
-      ${this.loggedIn
-        ? html`
-            ${this.headingTemplate}
-            <ds-todo-search></ds-todo-search>
-            ${this.bodyTemplate} ${this.sayHello(this.role)}
-          `
-        : html`<p>Usuario no logueado</p>`}
+      <button @click=${this.changeCompleted}>Completar</button>
+
+      ${this.headingTemplate}
+      <ds-todo-search></ds-todo-search>
+      ${this.bodyTemplate}
     `;
   }
   get headingTemplate() {
     return html`<h1>Todo List</h1>`;
   }
   get bodyTemplate() {
-    return html` <div>${icons.done}</div> `;
+    return html`
+      <div>${this.completed ? icons.done : icons.fiber_manual_record}</div>
+    `;
   }
-  changeLoggedIn() {
-    this.loggedIn = !this.loggedIn;
-  }
-  sayHello(role) {
-    switch (role) {
-      case "administrator":
-        return html`<p>Hola administrador</p>`;
-      case "premium":
-        return this.getUserPremiumTemplate();
-      default:
-        return html`<p>Hola usuario común</p>`;
-    }
-  }
-  getUserPremiumTemplate() {
-    return html`<p>Este es el menu para el usuario premium</p>
-      <ul>
-        <li>Opción 1</li>
-        <li>Opción 2</li>
-        <li>Opción 3</li>
-      </ul>`;
+  changeCompleted() {
+    this.completed = !this.completed;
   }
 }
 customElements.define("ds-todo-list", DsTodoList);
