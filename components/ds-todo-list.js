@@ -17,15 +17,34 @@ export class DsTodoList extends LitElement {
         background-color: #f0f0f0;
         padding: 1rem;
       }
+      ul {
+        margin: 1rem 0;
+        padding: 0;
+      }
+      li {
+        list-style-type: none;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+      li span {
+        margin-left: 0.5rem;
+      }
     `,
   ];
 
   static properties = {
     completed: { type: Boolean },
+    todos: { type: Array },
   };
   constructor() {
     super();
     this.completed = false;
+    this.todos = [
+      { title: "Comprar pan", completed: false },
+      { title: "Poner la lavadora", completed: false },
+      { title: "Llamar a mamá", completed: true },
+    ];
   }
 
   render() {
@@ -42,7 +61,16 @@ export class DsTodoList extends LitElement {
   }
   get bodyTemplate() {
     return html`
-      <div>${this.completed ? icons.done : icons.fiber_manual_record}</div>
+      <ul>
+        ${this.todos.map(
+          (todo) => html`
+            <li>
+              ${todo.completed ? icons.done : icons.fiber_manual_record}
+              <span>${todo.title}</span>
+            </li>
+          `,
+        )}
+      </ul>
     `;
   }
   changeCompleted() {
