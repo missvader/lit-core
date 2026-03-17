@@ -13,6 +13,11 @@ export class DsCard extends LitElement {
         border-radius: 0.5em;
         box-shadow: 0 0 0.5em #ccc;
       }
+      footer {
+        margin-top: 1rem;
+        border-top: 1px solid #ccc;
+        padding-top: 1rem;
+      }
     `,
   ];
   static properties = {
@@ -34,10 +39,10 @@ export class DsCard extends LitElement {
     return html` ${this.title === "" ? "" : html`<h1>${this.title}</h1>`} `;
   }
   get bodyTemplate() {
-    return html` <div>Body</div> `;
+    return html` <div><slot></slot></div> `;
   }
   get footerTemplate() {
-    return html` <footer>actions...</footer> `;
+    return html` <footer><slot name="actions"></slot></footer> `;
   }
 }
 customElements.define("ds-card", DsCard);
