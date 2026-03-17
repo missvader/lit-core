@@ -2,4 +2,8 @@ import "./components/dw-messaje.js";
 import "./components/ds-todo-list.js";
 import "./components/eit-counter.js";
 import "./components/ds-switch.js";
+import "./components/ds-page-links.js";
+import "./components/ds-page-links-numpages.js";
+import "./components/ds-page-links-numpages.js";
+import "./components/ds-card.js";
 console.log("Inicio del proyecto javascript");
