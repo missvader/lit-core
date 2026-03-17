@@ -13,7 +13,7 @@ export class DsSwitch extends LitElement {
         width: 64px;
         height: 20px;
         border-radius: 10px;
-        background-color: #ccc;
+        background-color: var(--ds-switch-bar-color, #ccc);
       }
       span {
         width: 32px;
@@ -21,12 +21,12 @@ export class DsSwitch extends LitElement {
         left: 0px;
         position: relative;
         border-radius: 50%;
-        background-color: #f66;
+        background-color: var(--ds-switch-off-state-color, #f66);
         transition: all 0.2s linear;
       }
       :host([checked]) span {
         left: 32px;
-        background-color: #6f6;
+        background-color: var(--ds-switch-on-state-color, #69f);
       }
     `,
   ];
