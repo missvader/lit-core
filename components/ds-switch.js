@@ -49,6 +49,13 @@ export class DsSwitch extends LitElement {
 
   toggle() {
     this.checked = !this.checked;
+    this.dispatchEvent(
+      new CustomEvent("ds-switch-change", {
+        composed: true,
+        bubbles: true,
+        detail: { checked: this.checked },
+      }),
+    );
   }
 }
 customElements.define("ds-switch", DsSwitch);

@@ -21,7 +21,7 @@ export class DsPageSwitch extends LitElement {
 
   constructor() {
     super();
-    this.active = false;
+    this.active = true;
     this.pages = ["uno", "dos", "tres"];
     this.page = "tres";
     this.test = "5";
@@ -33,13 +33,17 @@ export class DsPageSwitch extends LitElement {
       <ds-page-links
         .pages=${this.pages}
         .selectedPage=${this.page}
+        @ds-page-links-change=${this.doSelectedChange}
       ></ds-page-links>
-      <ds-switch ?checked=${this.active}></ds-switch>
+      <ds-switch
+        ?checked=${this.active}
+        @ds-switch-change=${this.changeActiveListener}
+      ></ds-switch>
       <button @click=${this.changeActive}>Cambiar active</button>
       <button @click=${this.showOne}>Cambiar pagina 1</button>
       <button @click=${this.show("dos")}>Cambiar pagina 2</button>
       <button @click=${this.show("tres")}>Cambiar pagina 3</button>
-      ${this.pagesTemplate}
+      ${this.active ? this.pagesTemplate : ""}
     `;
   }
 
@@ -87,6 +91,14 @@ export class DsPageSwitch extends LitElement {
 
   show(pageParameter) {
     return () => (this.page = pageParameter);
+  }
+
+  changeActiveListener(e) {
+    this.active = e.detail.checked;
+  }
+
+  doSelectedChange(e) {
+    this.page = e.detail.selectedPage;
   }
 }
 customElements.define("ds-page-switch", DsPageSwitch);

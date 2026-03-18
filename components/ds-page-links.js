@@ -28,13 +28,29 @@ export class DsPageLinks extends LitElement {
       <ul>
         ${this.pages.map(
           (page) => html`
-            <li class="${this.selectedPage === page ? "selected" : ""}">
+            <li
+              @click=${() => this.setPage(page)}
+              class="${this.selectedPage === page ? "selected" : ""}"
+            >
               ${page}
             </li>
           `,
         )}
       </ul>
+      ${this.selectedPage}
     `;
+  }
+  setPage(page) {
+    this.selectedPage = page;
+    this.dispatchEvent(
+      new CustomEvent("ds-page-links-change", {
+        composed: true,
+        bubbles: true,
+        detail: {
+          selectedPage: this.selectedPage,
+        },
+      }),
+    );
   }
 }
 customElements.define("ds-page-links", DsPageLinks);
