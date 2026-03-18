@@ -1,4 +1,4 @@
-html {
+/* html {
   --ds-switch-off-state-color: rgb(109, 107, 107);
   --ds-switch-on-state-color: rgb(20, 194, 14);
   --ds-switch-bar-color: rgb(218, 202, 202);
@@ -7,4 +7,9 @@ html {
 ds-card {
   --ds-switch-off-state-color: rgb(226, 12, 180);
   --ds-switch-on-state-color: rgb(243, 220, 8);
+} */
+
+:root {
+  margin: 1em;
+  padding: 1em;
 }

@@ -6,4 +6,6 @@ import "./components/ds-page-links.js";
 import "./components/ds-page-links-numpages.js";
 import "./components/ds-page-links-numpages.js";
 import "./components/ds-card.js";
+import "./components/ds-page-switch.js";
+import "./components/eit-prop.js";
 console.log("Inicio del proyecto javascript");

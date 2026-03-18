@@ -13,6 +13,7 @@
     "@web/dev-server": "^0.4.6"
   },
   "dependencies": {
+    "@dile/ui": "^2.13.0",
     "lit": "^3.3.2",
     "wired-elements": "^3.0.0-rc.6"
   }

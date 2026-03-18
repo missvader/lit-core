@@ -6,7 +6,7 @@ export class DsPageLinks extends LitElement {
     pageStyles,
     css`
       :host {
-        border: 1px solid #ccc;
+        display: block;
         margin: 0.5rem;
         padding: 0.5rem;
       }
@@ -14,13 +14,13 @@ export class DsPageLinks extends LitElement {
   ];
   static properties = {
     pages: { type: Array, reflect: true },
-    selectedPage: { type: Number, reflect: true },
+    selectedPage: { type: String, reflect: true },
   };
 
   constructor() {
     super();
-    this.pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    this.selectedPage = 1;
+    this.pages = [];
+    this.selectedPage = 0;
   }
 
   render() {
