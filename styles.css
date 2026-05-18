@@ -13,3 +13,8 @@ ds-card {
   margin: 1em;
   padding: 1em;
 }
+
+.menu p {
+  margin: 0;
+  padding: 0;
+}

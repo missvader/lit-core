@@ -8,4 +8,6 @@ import "./components/ds-page-links-numpages.js";
 import "./components/ds-card.js";
 import "./components/ds-page-switch.js";
 import "./components/eit-prop.js";
-console.log("Inicio del proyecto javascript");
+import "./components/eit-menu-overlay.js";
+import "./components/eit-show-click.js";
+import "./components/ds-input-checkbox.js";

@@ -28,7 +28,11 @@ export class EitCounter extends LitElement {
   ];
 
   static properties = {
-    count: { type: Number, reflect: true },
+    count: {
+      type: Number,
+      reflect: true,
+      hasChanged: (value, oldValue) => value % 5 === 0,
+    },
     quantity: { type: Number, reflect: true },
   };
 
