@@ -11,3 +11,4 @@ import "./components/eit-prop.js";
 import "./components/eit-menu-overlay.js";
 import "./components/eit-show-click.js";
 import "./components/ds-input-checkbox.js";
+import "./components/eit-clock.js";
