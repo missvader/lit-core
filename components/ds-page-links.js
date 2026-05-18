@@ -37,7 +37,6 @@ export class DsPageLinks extends LitElement {
           `,
         )}
       </ul>
-      ${this.selectedPage}
     `;
   }
   setPage(page) {
