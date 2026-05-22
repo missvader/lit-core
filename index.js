@@ -14,3 +14,4 @@ import "./components/ds-input-checkbox.js";
 import "./components/eit-clock.js";
 import "./components/user-list.js";
 import "./components/eit-user.js";
+import "./components/user-list-optimized.js";

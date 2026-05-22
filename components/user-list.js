@@ -48,7 +48,7 @@ export class UserList extends LitElement {
           selectedPage=${this.selectedOrder}
           @ds-page-links-change=${this.changeSelectedOrder}
         ></ds-page-links>
-        ${this.directiveRepeatTemplate}
+        ${this.mapRepeatTemplate}
       </button>
     `;
   }
