@@ -3,8 +3,9 @@ import { repeat } from "lit/directives/repeat.js";
 import { users } from "../users.js";
 import "./eit-user.js";
 import "./ds-page-links.js";
+import { PerformanceMixin } from "../mixins/performanceMixin.js";
 
-export class UserList extends LitElement {
+export class UserList extends PerformanceMixin(LitElement) {
   static styles = [
     css`
       :host {
@@ -23,7 +24,7 @@ export class UserList extends LitElement {
 
     this.orderTypes = ["asc", "desc"];
     this.selectedOrder = "asc";
-    this.times = 0;
+
     this.userAsc = [
       ...users.sort((a, b) => {
         if (a.name === b.name) return 0;
@@ -88,17 +89,17 @@ export class UserList extends LitElement {
   }
   change100Times() {
     if (this.times === 0) {
-      this.timeStart = performance.now();
+      this.startTime();
     }
-    if (this.times < 100) {
+    if (this.times < 3) {
       this.times++;
       this.usersOrdered = this.times % 2 === 0 ? this.userAsc : this.userDesc;
       this.updateComplete.then(() => {
         this.change100Times();
       });
     } else {
-      this.timeEnd = performance.now();
-      console.log(`Tiempo transcurrido: ${this.timeEnd - this.timeStart} ms`);
+      this.endTime();
+      this.reportPerformance();
       this.times = 0;
     }
   }
